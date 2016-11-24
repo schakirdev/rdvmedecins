@@ -4,7 +4,7 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -17,11 +17,11 @@ public class RendezVous extends AbstractEntity {
 
 	@Temporal(TemporalType.DATE)
 	private Date jour;
-	@OneToMany
-	@JoinColumn(name = "id_creneau", insertable = false, updatable = false)
+	@ManyToOne
+	@JoinColumn(name = "id_creneau")
 	private Creneau creneau;
-	@OneToMany
-	@JoinColumn(name = "id_client", insertable = false, updatable = false)
+	@ManyToOne
+	@JoinColumn(name = "id_client")
 	private Client client;
 
 	public RendezVous() {

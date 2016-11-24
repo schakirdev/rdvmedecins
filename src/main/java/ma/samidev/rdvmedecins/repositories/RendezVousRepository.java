@@ -10,7 +10,7 @@ import ma.samidev.rdvmedecins.entities.RendezVous;
 
 public interface RendezVousRepository extends CrudRepository<RendezVous, Long> {
 	
-	@Query("SELECT r FROM RendezVous r WHERE r.jour = :jour AND r.creneau.medecin = :idMedecin")
+	@Query("SELECT r FROM RendezVous r WHERE r.jour = :jour AND r.creneau.medecin.id = :idMedecin")
 	Iterable<RendezVous> getRendezVousJourMedecin(@Param("idMedecin") Long idMedecin, @Param("jour") Date Jour);
 
 }

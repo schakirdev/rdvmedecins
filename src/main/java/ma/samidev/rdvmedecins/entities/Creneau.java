@@ -2,7 +2,7 @@ package ma.samidev.rdvmedecins.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -15,7 +15,7 @@ public class Creneau extends AbstractEntity {
 	private int heureFin;
 	private int minDebut;
 	private int minFin;
-	@OneToMany
+	@ManyToOne
 	@JoinColumn(name = "id_medecin", insertable = false, updatable = false)
 	private Medecin medecin;
 
@@ -70,7 +70,8 @@ public class Creneau extends AbstractEntity {
 	}
 
 	public String toString() {
-		return String.format("Créneau[%d, %d, %d, %d:%d, %d:%d, %d]", id, version, heureDebut, minDebut, heureFin, minFin, medecin.id);
+		return String.format("Créneau[%d, %d, %d:%d, %d:%d, %d]", id, version, heureDebut, minDebut, heureFin,
+				minFin, medecin.id);
 	}
 
 }
